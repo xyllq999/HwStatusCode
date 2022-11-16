@@ -62,15 +62,19 @@ def queryStatus(uid, password, email, passwd):
     print()
 
 
+def do_query(uid, password, email, passwd, queryInterval):
+    try:
+        while True:
+            queryStatus(uid, password, your_email, email_password)
+            time.sleep(queryInterval)
+    except:
+        do_query(uid, password, email, passwd, queryInterval)
+
+
 if __name__ == "__main__":
     uid = '你的账户名'
     password = '密码'
     your_email = '用于发送接受提醒的邮箱，只能QQ邮箱'
     email_password = '邮箱授权码，获取方式请自行搜索'
     queryInterval = 1800  # 默认半小时查询一次
-    try:
-        while True:
-            queryStatus(uid, password, your_email, email_password)
-            time.sleep(queryInterval)
-    except:
-        print('出错了请关闭梯子后重新运行')
+    do_query(uid, password, your_email, email_password, queryInterval)
